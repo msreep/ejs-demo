@@ -2,9 +2,9 @@
   "name": "ejs-demo",
   "version": "1.0.0",
   "description": "",
-  "main": "server-4.js",
+  "main": "server-2.js",
   "scripts": {
-    "start": "node server-4",
+    "start": "node server-2",
     "test": "jest app.test.js"
   },
   "keywords": [],
