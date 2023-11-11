@@ -4,7 +4,8 @@
   "description": "",
   "main": "server-4.js",
   "scripts": {
-    "start": "node server-4"
+    "start": "node server-4",
+    "test": "jest app.test.js"
   },
   "keywords": [],
   "author": "",
