@@ -1,0 +1,7 @@
+https://www.mongodb.com/docs/manual/tutorial/install-mongodb-on-windows/
+https://www.mongodb.com/try/download/community
+
+Did not install mongosh
+
+Run MSI 
+Hint: If taking long time and nothing happens, make sure you didn't miss Windows permission box :(  

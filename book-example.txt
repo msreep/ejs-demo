@@ -1,0 +1,63 @@
+//listing 14.23
+const mongoose = require('mongoose');
+
+mongoose.connect('mongodb://127.0.0.1:27017/test');
+
+const db = mongoose.connection;
+
+db.once('open', () => {
+    console.log('connected to mongo');
+});
+
+//Listing 14.24
+
+//const mongoose = require('mongoose');
+// define a schema that maps to the structure of the data in MongoDB
+const bookSchema = new mongoose.Schema({
+id: Number,
+isbn10: String,
+isbn13: String,
+title: String,
+year: Number,
+publisher: String,
+production: {
+status: String,
+binding: String,
+size: String,
+pages: Number,
+instock: String
+},
+category: {
+main: String,
+secondary: String
+}
+});
+// now create model using this schema that maps to books collection in database
+//module.exports = mongoose.model('Book', bookSchema,'books');
+
+// get our data model
+//const Book = require('./models/Book.js');
+//my addition
+const Book = mongoose.model('Book', bookSchema);
+
+app.get('/api/books', (req,resp) => {
+    // use mongoose to retrieve all books from Mongo
+    Book.find({}, function(err, data) {
+	if (err) {
+	    resp.json({ message: 'Unable to connect to books' });
+	} else {
+	    // return JSON retrieved by Mongo as response
+	    resp.json(data);
+	}
+    });
+});
+app.get('/api/books/:isbn', (req,resp) => {
+    // use mongoose to retrieve all books from Mongo
+    Book.find({isbn10: req.params.isbn}, function(err, data) {
+	if (err) {
+	    resp.json({ message: 'Book not found' });
+	} else {
+	    resp.json(data);
+	}
+    });
+});

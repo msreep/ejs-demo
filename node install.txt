@@ -1,0 +1,3 @@
+cd ejs-demo
+npm install mongodb --save
+npm install mongoose --save
